@@ -1,0 +1,18 @@
+.white-tela{
+    -fx-background-color: #fff;
+}
+
+.round-edge{
+    -fx-background-radius: 15px;
+}
+
+.selected{
+    -fx-background-color: #f5f4f2;
+}
+
+.side-button{
+    -fx-background-color: #dedede;
+}
+.side-button:hover{
+    -fx-background-color: #f0ecec;
+}

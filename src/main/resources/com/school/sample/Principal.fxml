@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <center>
+                  <AnchorPane prefHeight="559.0" prefWidth="886.0" BorderPane.alignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></AnchorPane>
+               </center>
+               <top>
+                  <HBox prefHeight="59.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="59.0" prefWidth="214.0" style="-fx-background-color: #78d3f8;">
+                           <children>
+                              <Label layoutX="36.0" layoutY="7.0" prefHeight="36.0" prefWidth="94.0" text="Shift">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="55.0" fitWidth="68.0" layoutX="130.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/Remove-bg.ai_1714465814043.png" />
+                                 </image>
+                              </ImageView>
+                           </children></AnchorPane>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" visible="false" />
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="268.0">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <TextField prefHeight="25.0" prefWidth="231.0" promptText="Search" styleClass="round-edge" stylesheets="@Style.css" />
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/lupa.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="59.0" prefWidth="412.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="97.0" text="Log Out  ">
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="46.0" prefWidth="38.0" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView fitHeight="46.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../fotos/exit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="541.0" prefWidth="214.0" style="-fx-background-color: #dedede;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button graphicTextGap="6.0" layoutY="69.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Produtos">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="selected" />
+                              <String fx:value="side-button" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/shopping-cart-add.png" />
+                                 </image></ImageView>
+                           </graphic>
+                        </Button>
+                        <Button graphicTextGap="2.0" layoutY="131.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Funcionários">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/users-alt.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="selected" />
+                              <String fx:value="side-button" />
+                           </styleClass>
+                        </Button>
+                        <Button graphicTextGap="7.0" layoutY="199.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="About me">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/user-trust.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="selected" />
+                              <String fx:value="side-button" />
+                           </styleClass>
+                        </Button>
+                        <Button alignment="CENTER" layoutY="14.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Home" textAlignment="CENTER">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="selected" />
+                              <String fx:value="side-button" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </left>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

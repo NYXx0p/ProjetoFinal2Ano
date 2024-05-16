@@ -2,6 +2,10 @@
     -fx-background-color: #fff;
 }
 
+.transparent{
+    -fx-background-color: transparent;
+}
+
 .round-edge{
     -fx-background-radius: 15px;
 }
@@ -14,5 +18,72 @@
     -fx-background-color: #dedede;
 }
 .side-button:hover{
-    -fx-background-color: #f0ecec;
+    -fx-background-color: #fff;
+}
+
+.cor-Prin{
+    -fx-background-color: #78d3f8;
+}
+
+.shadow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
+    }
+
+.table-view{
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-color: #78d3f8;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1.5px;
+}
+.table-view .column-header-background{
+    -fx-background-color: #78d3f8;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+}
+.table-view .column-header .label{
+    -fx-text-fill: #fff;
+}
+
+.pay-button{
+    -fx-background-color: #78d3f8;
+    -fx-background-radius: 7px;
+}
+
+.pay-button:hover{
+    -fx-background-color: #20b7f5;
+}
+
+.adicionar_btn{
+    -fx-background-color: #11d157;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #fff;
+}
+
+.adicionar_btn:hover{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10,0,0,0)
+}
+
+.editar_btn{
+    -fx-background-color: #037ffc;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #fff;
+}
+
+.editar_btn:hover{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10,0,0,0)
+}
+
+.eliminar_btn{
+    -fx-background-color: #fc0703;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #fff;
+}
+
+.eliminar_btn:hover{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 15,0,0,0)
 }

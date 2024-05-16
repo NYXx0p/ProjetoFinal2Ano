@@ -3,32 +3,487 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.sample.SampleController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
-                  <AnchorPane prefHeight="559.0" prefWidth="886.0" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="559.0" prefWidth="886.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
-                     </cursor></AnchorPane>
+                     </cursor>
+                     <children>
+                        <AnchorPane fx:id="HomeTela" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="17.0" layoutY="259.0" prefHeight="330.0" prefWidth="853.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="201.0">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                                 </effect>
+                                 <styleClass>
+                                    <String fx:value="round-edge" />
+                                    <String fx:value="white-tela" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="309.0" prefWidth="439.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="353.0" AnchorPane.topAnchor="14.0">
+                                       <styleClass>
+                                          <String fx:value="white-tela" />
+                                          <String fx:value="round-edge" />
+                                       </styleClass>
+                                       <effect>
+                                          <DropShadow height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                       <children>
+                                          <AreaChart layoutX="-73.0" layoutY="-91.0" prefHeight="309.0" prefWidth="486.0" title="Quantidade de Clientes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="524.0" layoutY="14.0" prefHeight="309.0" prefWidth="324.0" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
+                                       <styleClass>
+                                          <String fx:value="white-tela" />
+                                          <String fx:value="round-edge" />
+                                       </styleClass>
+                                       <effect>
+                                          <DropShadow height="5.0" radius="2.0" width="5.0" />
+                                       </effect>
+                                       <children>
+                                          <AreaChart layoutX="-233.0" layoutY="-34.0" prefHeight="309.0" prefWidth="324.0" title="Quantidade de Vendas" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Separator layoutX="17.0" layoutY="200.0" prefWidth="853.0" visible="false" AnchorPane.bottomAnchor="338.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="200.0" />
+                              <AnchorPane prefHeight="181.0" prefWidth="853.0" stylesheets="@Style.css" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                                 </effect>
+                                 <styleClass>
+                                    <String fx:value="round-edge" />
+                                    <String fx:value="white-tela" />
+                                 </styleClass>
+                                 <children>
+                                    <ScrollPane hbarPolicy="ALWAYS" layoutX="102.0" layoutY="-33.0" prefHeight="181.0" prefWidth="853.0" styleClass="transparent" stylesheets="@Style.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <AnchorPane prefHeight="165.0" prefWidth="1117.0">
+                                             <styleClass>
+                                                <String fx:value="white-tela" />
+                                                <String fx:value="round-edge" />
+                                             </styleClass>
+                                             <children>
+                                                <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                   <styleClass>
+                                                      <String fx:value="round-edge" />
+                                                      <String fx:value="cor-Prin" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../fotos/people.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Clientes">
+                                                         <font>
+                                                            <Font name="System Bold" size="25.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                         <font>
+                                                            <Font size="38.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="283.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                   <styleClass>
+                                                      <String fx:value="round-edge" />
+                                                      <String fx:value="cor-Prin" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <ImageView fitHeight="86.0" fitWidth="99.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../fotos/shopping-cart.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Produtos">
+                                                         <font>
+                                                            <Font name="System Bold" size="25.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                         <font>
+                                                            <Font size="38.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="552.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                   <styleClass>
+                                                      <String fx:value="round-edge" />
+                                                      <String fx:value="cor-Prin" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../fotos/truck-side.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Funcionários">
+                                                         <font>
+                                                            <Font name="System Bold" size="21.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                         <font>
+                                                            <Font size="38.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="825.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                   <styleClass>
+                                                      <String fx:value="round-edge" />
+                                                      <String fx:value="cor-Prin" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../fotos/file.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Faturas">
+                                                         <font>
+                                                            <Font name="System Bold" size="25.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                         <font>
+                                                            <Font size="38.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ProdutosTela" layoutX="27.0" layoutY="14.0" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="8.0" prefHeight="522.0" prefWidth="605.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="8.0">
+                                 <styleClass>
+                                    <String fx:value="white-tela" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="round-edge" />
+                                 </styleClass>
+                                 <children>
+                                    <GridPane fx:id="produtos_grid" layoutX="7.0" layoutY="8.0" prefHeight="33.0" prefWidth="102.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="625.0" layoutY="11.0" prefHeight="522.0" prefWidth="255.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="11.0">
+                                 <styleClass>
+                                    <String fx:value="round-edge" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-tela" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView editable="true" layoutX="5.0" layoutY="6.0" prefHeight="232.0" prefWidth="245.0" AnchorPane.bottomAnchor="284.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="Nome" />
+                                        <TableColumn prefWidth="75.0" text="Quantidade" />
+                                          <TableColumn prefWidth="75.0" text="Preço(€)" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <Label layoutX="64.0" layoutY="244.0" text="Total:" AnchorPane.bottomAnchor="248.0" AnchorPane.rightAnchor="142.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="120.0" layoutY="244.0" text="€0.0" AnchorPane.bottomAnchor="248.0" AnchorPane.rightAnchor="95.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="42.0" layoutY="274.0" text="Quantia:" AnchorPane.bottomAnchor="218.0" AnchorPane.rightAnchor="138.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="119.0" layoutY="278.0" prefHeight="25.0" prefWidth="119.0" promptText="€0.0" AnchorPane.bottomAnchor="219.0" AnchorPane.rightAnchor="17.0" />
+                                    <Label layoutX="64.0" layoutY="310.0" text="Troco:" AnchorPane.bottomAnchor="182.0" AnchorPane.rightAnchor="136.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="123.0" layoutY="310.0" text="€0.0" AnchorPane.bottomAnchor="182.0" AnchorPane.rightAnchor="95.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="9.0" layoutY="362.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="237.0" styleClass="pay-button" text="Pagar" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button layoutX="9.0" layoutY="433.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="110.0" styleClass="pay-button" text="Remover" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="9.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button layoutX="136.0" layoutY="432.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="110.0" styleClass="pay-button" text="Fatura" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="9.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ClientesTela" layoutX="23.0" layoutY="14.0" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="583.0" layoutY="7.0" prefHeight="521.0" prefWidth="293.0" AnchorPane.bottomAnchor="13.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0">
+                                 <styleClass>
+                                    <String fx:value="white-tela" />
+                                    <String fx:value="round-edge" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Button layoutX="16.0" layoutY="269.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="adicionar_btn" text="Adicionar" AnchorPane.bottomAnchor="209.0" AnchorPane.rightAnchor="22.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                    <Button layoutX="16.0" layoutY="348.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="editar_btn" text="Editar" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button layoutX="16.0" layoutY="431.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="eliminar_btn" text="Eliminar" AnchorPane.bottomAnchor="47.0" AnchorPane.rightAnchor="22.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="55.0" prefHeight="37.0" prefWidth="92.0" text="ID">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="92.0" prefHeight="37.0" prefWidth="92.0" text="Nome">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="129.0" prefHeight="37.0" prefWidth="101.0" text="Contribuinte">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="166.0" prefHeight="37.0" prefWidth="92.0" text="Telemóvel">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="113.0" layoutY="61.0" />
+                                    <TextField layoutX="113.0" layoutY="98.0" />
+                                    <TextField layoutX="113.0" layoutY="135.0" />
+                                    <TextField layoutX="113.0" layoutY="172.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="9.0" layoutY="7.0" prefHeight="521.0" prefWidth="560.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="317.0" AnchorPane.topAnchor="7.0">
+                                 <styleClass>
+                                    <String fx:value="white-tela" />
+                                    <String fx:value="round-edge" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView editable="true" layoutX="4.0" layoutY="4.0" prefHeight="513.0" prefWidth="549.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="4.0">
+                                      <columns>
+                                        <TableColumn prefWidth="60.0" text="ID" />
+                                        <TableColumn prefWidth="190.0" text="Nome" />
+                                          <TableColumn prefWidth="152.0" text="Contribuinte" />
+                                          <TableColumn prefWidth="139.0" text="Telemóvel" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="FornecedoresTela" layoutX="97.0" layoutY="62.0" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="521.0" prefWidth="293.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="14.0">
+                                 <styleClass>
+                                    <String fx:value="white-tela" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="round-edge" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AnchorPane layoutX="313.0" layoutY="14.0" prefHeight="521.0" prefWidth="566.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="14.0">
+                                 <styleClass>
+                                    <String fx:value="white-tela" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="round-edge" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView editable="true" layoutX="4.0" layoutY="6.0" prefHeight="509.0" prefWidth="557.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
+                                      <columns>
+                                        <TableColumn prefWidth="56.0" text="ID" />
+                                        <TableColumn prefWidth="141.0" text="Nome" />
+                                          <TableColumn prefWidth="141.0" text="Morada" />
+                                          <TableColumn prefWidth="105.0" text="Email" />
+                                          <TableColumn prefWidth="107.0" text="Telemóvel" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                              <Button layoutX="26.0" layoutY="279.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="adicionar_btn" text="Adicionar" AnchorPane.bottomAnchor="219.0" AnchorPane.leftAnchor="26.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="26.0" layoutY="358.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="editar_btn" text="Editar" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="26.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="26.0" layoutY="441.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="eliminar_btn" text="Eliminar" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="26.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="65.0" prefHeight="37.0" prefWidth="92.0" text="ID">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="102.0" prefHeight="37.0" prefWidth="92.0" text="Nome">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="139.0" prefHeight="37.0" prefWidth="101.0" text="Morada">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="176.0" prefHeight="37.0" prefWidth="92.0" text="Email">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="123.0" layoutY="71.0" />
+                              <TextField layoutX="123.0" layoutY="108.0" />
+                              <TextField layoutX="123.0" layoutY="145.0" />
+                              <TextField layoutX="123.0" layoutY="182.0" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="211.0" prefHeight="37.0" prefWidth="92.0" text="Telemóvel">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="122.0" layoutY="217.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="SobreMimTela" layoutY="-1.0" prefHeight="541.0" prefWidth="886.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+                           <children>
+                              <Label layoutX="256.0" layoutY="14.0" prefHeight="43.0" prefWidth="375.0" text="Projeto Shift">
+                                 <font>
+                                    <Font name="System Bold" size="50.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="35.0" layoutY="126.0" prefHeight="38.0" prefWidth="679.0" text="O projeto Shift foi feito pelo Florin Chascear do 2ºGI1 da escola">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="35.0" layoutY="159.0" prefHeight="45.0" prefWidth="680.0" text="Ferreira Dias para um projeto de Programação">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="148.0" fitWidth="248.0" layoutX="643.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/AEAA%20-%20LOGOTIPO.V1%20-%20TAMANHO%20L.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="31.0" layoutY="231.0" prefHeight="40.0" prefWidth="468.0" text="O código do Projeto pode ser encontrado no GitHub">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="38.0" layoutY="309.0" prefHeight="35.0" prefWidth="152.0" text="Clique no Butão:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="187.0" layoutY="286.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="285.0" style="-fx-background-color: #fff; -fx-background-radius: 7px;" text="GitHub">
+                                 <graphic>
+                                    <ImageView fitHeight="63.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../fotos/code.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
                </center>
                <top>
-                  <HBox prefHeight="59.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+                  <HBox prefHeight="59.0" prefWidth="1100.0" style="-fx-background-color: #dedede;" BorderPane.alignment="CENTER">
                      <children>
                         <AnchorPane prefHeight="59.0" prefWidth="214.0" style="-fx-background-color: #78d3f8;">
                            <children>
@@ -57,17 +512,17 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <Pane prefHeight="59.0" prefWidth="412.0" />
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                        <Pane prefHeight="59.0" prefWidth="412.0" style="-fx-background-color: #dedede;" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="97.0" text="Log Out  ">
+                              <Label alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="97.0" stylesheets="@Style.css" text="Log Out  ">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </Label>
-                              <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="46.0" prefWidth="38.0" style="-fx-background-color: transparent;">
+                              <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="48.0" prefWidth="54.0" styleClass="side-button" stylesheets="@Style.css">
                                  <graphic>
-                                    <ImageView fitHeight="46.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="56.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" styleClass="side-button">
                                        <image>
                                           <Image url="@../../../fotos/exit.png" />
                                        </image>
@@ -78,6 +533,12 @@
                                  </cursor>
                               </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
                         </HBox>
                      </children>
                   </HBox>
@@ -85,7 +546,7 @@
                <left>
                   <AnchorPane prefHeight="541.0" prefWidth="214.0" style="-fx-background-color: #dedede;" BorderPane.alignment="CENTER">
                      <children>
-                        <Button graphicTextGap="6.0" layoutY="69.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Produtos">
+                        <Button graphicTextGap="6.0" layoutY="72.0" mnemonicParsing="false" onAction="#ProdutosButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Produtos">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -99,18 +560,39 @@
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../fotos/shopping-cart-add.png" />
+                                    <Image url="@../../../fotos/shopping-cart.png" />
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button graphicTextGap="2.0" layoutY="131.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Funcionários">
+                        <Button alignment="CENTER" graphicTextGap="2.0" layoutY="203.0" mnemonicParsing="false" onAction="#FornecedoresButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Fornecedores">
                            <font>
                               <Font size="16.0" />
                            </font>
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../fotos/users-alt.png" />
+                                    <Image url="@../../../fotos/truck-side.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="selected" />
+                              <String fx:value="side-button" />
+                           </styleClass>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button graphicTextGap="7.0" layoutY="269.0" mnemonicParsing="false" onAction="#SobreButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Sobre Mim">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/portrait.png" />
                                  </image></ImageView>
                            </graphic>
                            <cursor>
@@ -121,25 +603,7 @@
                               <String fx:value="side-button" />
                            </styleClass>
                         </Button>
-                        <Button graphicTextGap="7.0" layoutY="199.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="About me">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../fotos/user-trust.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="selected" />
-                              <String fx:value="side-button" />
-                           </styleClass>
-                        </Button>
-                        <Button alignment="CENTER" layoutY="14.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Home" textAlignment="CENTER">
+                        <Button alignment="CENTER" layoutY="6.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Home" textAlignment="CENTER">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -157,6 +621,25 @@
                               <String fx:value="selected" />
                               <String fx:value="side-button" />
                            </styleClass>
+                        </Button>
+                        <Button graphicTextGap="6.0" layoutY="136.0" mnemonicParsing="false" onAction="#ClientesButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Clientes">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="selected" />
+                              <String fx:value="side-button" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/users-alt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
                      </children>
                   </AnchorPane>

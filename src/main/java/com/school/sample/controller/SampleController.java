@@ -1,8 +1,10 @@
 package com.school.sample.controller;
 import com.school.sample.JVclass.Cliente;
+import com.school.sample.JVclass.Fornecedor;
 import com.school.sample.JVclass.Produtos;
 import com.school.sample.JVclass.Settings;
 import com.school.sample.connection.ClienteDB;
+import com.school.sample.connection.FornecedorDB;
 import com.school.sample.connection.MyConnection;
 import com.school.sample.connection.ProdutosDB;
 import javafx.collections.ObservableList;
@@ -25,6 +27,28 @@ import java.util.ResourceBundle;
 
 public class SampleController implements Initializable {
     @FXML
+    private TableView <Fornecedor> TableListaFornecedor;
+    @FXML
+    private TableColumn <Fornecedor,Integer> FornecedorID;
+    @FXML
+    private TableColumn <Fornecedor,String> FornecedorNome;
+    @FXML
+    private TableColumn <Fornecedor,String> FornecedorMorada;
+    @FXML
+    private TableColumn <Fornecedor,Integer> FornecedorTelefone;
+    @FXML
+    private TableColumn <Fornecedor,String> FornecedorEmail;
+    @FXML
+    private TextField txtIdFornecedor;
+    @FXML
+    private TextField txtNomeFornecedor;
+    @FXML
+    private TextField txtMoradaFornecedor;
+    @FXML
+    private TextField txtEmailFornecedor;
+    @FXML
+    private TextField txtTelefoneFornecedor;
+    @FXML
     private TableColumn <Produtos,Integer> ProdutoID;
     @FXML
     private TableColumn <Produtos,String> ProdutoNome;
@@ -33,7 +57,7 @@ public class SampleController implements Initializable {
     @FXML
     private TableColumn <Produtos,Integer>ProdutoQuantidade;
     @FXML
-    private TableView TableListaProduto;
+    private TableView <Produtos> TableListaProduto;
     @FXML
     private TextField txtIdProduto;
     @FXML
@@ -237,7 +261,7 @@ public class SampleController implements Initializable {
                 ClienteEdit.setTelefone(Integer.parseInt(txtTelemovelCliente.getText()));
                 Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
                 alert1.setTitle("CONFIRMAÇÃO");
-                alert1.setHeaderText("Deseja mesmo editar ?");
+                alert1.setHeaderText("Deseja mesmo editar "+"\nID: " +txtIdCliente.getText() + "\nNome: " + txtNomeCliente.getText() + "\nTelemóvel:" + txtTelemovelCliente.getText() + "\nContribuinte: " + txtContribuinteCliente.getText());
                 alert1.setContentText(null);
                 ButtonType btnSim = new ButtonType("SIM");
                 ButtonType btnNao = new ButtonType("NÃO");
@@ -575,14 +599,243 @@ public class SampleController implements Initializable {
             }
         }
     }
+    public void TableListaFornecedor(){
+        FornecedorID.setCellValueFactory(new PropertyValueFactory<Fornecedor, Integer>("Id"));
+        FornecedorNome.setCellValueFactory(new PropertyValueFactory<Fornecedor, String>("nome"));
+        FornecedorMorada.setCellValueFactory(new PropertyValueFactory<Fornecedor, String>("morada"));
+        FornecedorTelefone.setCellValueFactory(new PropertyValueFactory<Fornecedor, Integer>("telefone"));
+        FornecedorEmail.setCellValueFactory(new PropertyValueFactory<Fornecedor, String>("email"));
+        TableListaFornecedor.setItems(FornecedorDB.listaFornecedor());
+        TableListaFornecedor.refresh();
+    }
+    public void verFornecedor(MouseEvent mouseEvent) {
+        Fornecedor fornecedorVer = (Fornecedor) TableListaFornecedor.getSelectionModel().getSelectedItem();
+        if (fornecedorVer != null) {
+            txtIdFornecedor.setText(String.valueOf(fornecedorVer.getId()));
+            txtNomeFornecedor.setText(fornecedorVer.getNome());
+            txtMoradaFornecedor.setText(fornecedorVer.getMorada());
+            txtTelefoneFornecedor.setText(String.valueOf(fornecedorVer.getTelefone()));
+            txtEmailFornecedor.setText(fornecedorVer.getEmail());
+        } else {
+            System.out.println("Nenhum Fornecedor foi selecionado.");
+        }
+    }
+
+    public void btnAdicionarFornecedor(ActionEvent actionEvent) {
+        if (txtNomeFornecedor.getText().isEmpty() || txtMoradaFornecedor.getText().isEmpty() || txtTelefoneFornecedor.getText().isEmpty() || txtEmailFornecedor.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERRO");
+            alert.setHeaderText(null);
+            alert.setContentText("Preencha todos os espaços em branco");
+            alert.showAndWait();
+        } else {
+            try {
+                Connection conn = MyConnection.openDB();
+                if (conn != null) {
+                    String nome = txtNomeFornecedor.getText();
+                    String morada = txtMoradaFornecedor.getText();
+                    int telefone = Integer.parseInt(txtTelefoneFornecedor.getText());
+                    String email = txtEmailFornecedor.getText();
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("CONFIRMAÇÃO");
+                    alert.setHeaderText("Deseja mesmo adicionar?");
+                    alert.setContentText("Nome: " + nome + "\nMorada: " + morada + "\nTelemovel: " + telefone + "\nEmail: "+email);
+                    ButtonType btnSim = new ButtonType("SIM");
+                    ButtonType btnNao = new ButtonType("NÃO");
+                    alert.getButtonTypes().setAll(btnSim, btnNao);
+                    txtIdFornecedor.clear();
+
+                    Optional<ButtonType> escolha = alert.showAndWait();
+                    if (escolha.isPresent() && escolha.get() == btnSim) {
+                        TableListaFornecedor.getItems().clear();
+                        FornecedorDB.adicionar(nome,morada,telefone,email);
+                        Fornecedor forn = (Fornecedor) TableListaFornecedor.getSelectionModel().getSelectedItem();
+                        ObservableList<Fornecedor> fornecedores = FornecedorDB.listaFornecedor();
+                        fornecedores.add(forn);
+                        TableListaFornecedor.setItems(fornecedores);
+                        TableListaFornecedor.refresh();
+                        txtIdFornecedor.clear();
+                        txtNomeFornecedor.clear();
+                        txtMoradaFornecedor.clear();
+                        txtTelefoneFornecedor.clear();
+                        txtEmailFornecedor.clear();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR");
+                    alert.setHeaderText("Nao foi possivel estabelecer uma conexão com a base de dados");
+                    alert.setContentText(null);
+                    alert.showAndWait();
+                }
+            } catch (Exception e) {
+                Alert alertErro = new Alert(Alert.AlertType.ERROR);
+                alertErro.setTitle("ERRO");
+                alertErro.setHeaderText("Erro ao adicionar o Fornecedor: " + e.getMessage());
+                alertErro.showAndWait();
+            } finally {
+                MyConnection.closeDB();
+            }
+        }
+
+    }
+
+    public void btnEditarFornecedor(ActionEvent actionEvent) {
+        Alert alert = null;
+        if (txtIdFornecedor.getText().isEmpty() || txtNomeFornecedor.getText().isEmpty() || txtMoradaFornecedor.getText().isEmpty() || txtTelefoneFornecedor.getText().isEmpty() || txtEmailFornecedor.getText().isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERRO");
+            alert.setHeaderText(null);
+            alert.setContentText("Preencha todos os espaços em branco");
+            alert.showAndWait();
+        } else {
+            int novoId = Integer.parseInt(txtIdFornecedor.getText());
+            Fornecedor FornecedorEdit = null;
+            for (Fornecedor f : Settings.getListaFornecedor()) {
+                if (f.getId() == novoId) {
+                    FornecedorEdit = f;
+                    break;
+                }
+            }
+            if (FornecedorEdit != null) {
+                FornecedorEdit.setNome((String) txtNomeFornecedor.getText());
+                FornecedorEdit.setMorada((txtMoradaFornecedor.getText()));
+                FornecedorEdit.setTelefone(Integer.parseInt(txtTelefoneFornecedor.getText()));
+                FornecedorEdit.setEmail(txtEmailFornecedor.getText());
+                Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+                alert1.setTitle("CONFIRMAÇÃO");
+                alert1.setHeaderText("Deseja mesmo editar ?");
+                alert1.setContentText(null);
+                ButtonType btnSim = new ButtonType("SIM");
+                ButtonType btnNao = new ButtonType("NÃO");
+                alert1.getButtonTypes().setAll(btnSim, btnNao);
+
+                Optional<ButtonType> escolha = alert1.showAndWait();
+                if (escolha.isPresent() && escolha.get() == btnSim) {
+                    Connection conn = null;
+                    try {
+                        conn = MyConnection.openDB();
+                        if (conn != null) {
+                            String Atualizar = "UPDATE fornecedor SET nomeFornecedor = ?, moradaFornecedor = ?, telefoneFornecedor = ?, emailFornecedor = ? WHERE idFornecedor = ?;";
+                            PreparedStatement stmt = conn.prepareStatement(Atualizar);
+                            stmt.setString(1, txtNomeFornecedor.getText());
+                            stmt.setString(2, txtMoradaFornecedor.getText());
+                            stmt.setInt(3, Integer.parseInt(txtTelefoneFornecedor.getText()));
+                            stmt.setString(4,txtEmailFornecedor.getText());
+                            stmt.setInt(5, novoId);
+                            int atualizarBD = stmt.executeUpdate();
+                            if (atualizarBD > 0) {
+                                for (Fornecedor f : Settings.getListaFornecedor()) {
+                                    if (f.getId() == FornecedorEdit.getId()) {
+                                        int forn = Settings.getListaFornecedor().indexOf(f);
+                                        Settings.getListaFornecedor().set(forn,FornecedorEdit);
+                                        break;
+                                    }
+                                }
+
+                                Alert alertAddFun = new Alert(Alert.AlertType.CONFIRMATION);
+                                alertAddFun.setTitle("Informação");
+                                alertAddFun.setHeaderText("Fornecedor Editado com sucesso");
+                                alertAddFun.setContentText(null);
+                                alertAddFun.showAndWait();
+                                Settings.setEditarCliente(null);
+
+                                TableListaFornecedor.refresh();
+                                txtIdFornecedor.clear();
+                                txtNomeFornecedor.clear();
+                                txtMoradaFornecedor.clear();
+                                txtTelefoneFornecedor.clear();
+                                txtEmailFornecedor.clear();
+                            } else {
+                                Alert alertEdit = new Alert(Alert.AlertType.ERROR);
+                                alertEdit.setTitle("ERRO!");
+                                alertEdit.setHeaderText("Nao foi possivel atualizar o Fornecedor na base de dados");
+                                alertEdit.setContentText(null);
+                                alertEdit.showAndWait();
+                            }
+                        } else {
+                            Alert alertEdit = new Alert(Alert.AlertType.ERROR);
+                            alertEdit.setTitle("ERRO!");
+                            alertEdit.setHeaderText("Não foi possível estabelecer uma conexão com a base de dados.");
+                            alertEdit.setContentText(null);
+                            alertEdit.showAndWait();
+                        }
+                    } catch (Exception e) {
+                        Alert alertErro = new Alert(Alert.AlertType.ERROR);
+                        alertErro.setTitle("ERRO");
+                        alertErro.setHeaderText("Erro ao Editar o Fornecedor: " + e.getMessage());
+                        alertErro.showAndWait();
+                    } finally {
+                        if (conn != null) {
+                            try {
+                                conn.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void btnEliminarFornecedor(ActionEvent actionEvent) {
+        if (txtIdFornecedor.getText().isEmpty()
+                || txtNomeFornecedor.getText().isEmpty()
+                || txtMoradaFornecedor.getText().isEmpty()
+                || txtTelefoneFornecedor.getText().isEmpty()
+                || txtEmailFornecedor.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Selecione algum Fornecedor da tabela");
+            alert.showAndWait();}
+        else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Eliminar");
+            alert.setHeaderText("Deseja mesmo Eliminar?"+"\n"+"ID: " +txtIdFornecedor.getText() + "\n" + "Nome: " + txtNomeFornecedor.getText() + "\n" + "Morada: " + txtMoradaFornecedor.getText() + "\n" + "Telemóvel: " + txtTelefoneFornecedor.getText() + "\nEmail: "+ txtEmailFornecedor.getText());
+            ButtonType botaoSim = new ButtonType("Sim");
+            ButtonType botaoNao = new ButtonType("Não");
+            alert.getButtonTypes().setAll(botaoSim, botaoNao);
+            Optional<ButtonType> choose = alert.showAndWait();
+            if (choose.get() == botaoSim) {
+                int novoId = Integer.parseInt(txtIdFornecedor.getText());
+                for (Fornecedor f : Settings.getListaFornecedor()) {
+                    if (f.getId() == novoId) {
+                        Settings.getListaFornecedor().remove(f);
+                        FornecedorDB.remover(novoId);
+                        txtIdFornecedor.setText("");
+                        txtNomeFornecedor.setText("");
+                        txtMoradaFornecedor.setText("");
+                        txtTelefoneFornecedor.setText("");
+                        txtEmailFornecedor.setText("");
+                        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                        alert1.setTitle("Information");
+                        alert1.setHeaderText(null);
+                        alert1.setContentText("O Fornecedor foi Eliminado");
+                        alert1.showAndWait();
+                        break;
+                    }
+                }
+            }
+            else{
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                alert2.setTitle("Information");
+                alert2.setHeaderText(null);
+                alert2.setContentText("Cancelado com Sucesso");
+                alert2.showAndWait();
+
+            }
+        }
+    }
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TableListaCliente();
         TableListaProduto();
-
+        TableListaFornecedor();
     }
-
-
 
 
 

@@ -3,7 +3,7 @@ package com.school.sample.JVclass;
 public class Fornecedor extends pessoa{
     private String morada;
     private String email;
-    public Fornecedor(int Id,String nome,int telefone,String morada,String email){
+    public Fornecedor(int Id,String nome,String morada,int telefone,String email){
         super(Id,nome,telefone);
         this.morada = morada;
         this.email = email;

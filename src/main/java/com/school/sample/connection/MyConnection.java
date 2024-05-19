@@ -1,4 +1,4 @@
-package com.school.sample;
+package com.school.sample.connection;
 
 import javafx.scene.control.Alert;
 
@@ -18,9 +18,9 @@ public class MyConnection {
             //Conexão ao sistema de gestão de base de dados MySQL
             //Ligação à base de dados agendadb
             conn = DriverManager.getConnection(URL, User, Password);
-            /*if (conn != null){
+            if (conn != null){
                 System.out.println("Ligação à base de dados...OK");
-            }*/
+            }
         }
         catch (ClassNotFoundException | SQLException ex){
             //System.out.println("Erro na ligação à base de dados: "+ex);
@@ -39,7 +39,6 @@ public class MyConnection {
         }
         catch(SQLException ex){
             System.out.println("Erro ao fechar a ligação à base de dados: "+ex);
-            //FXAlert.showException(ex);
         }
     }
 

@@ -1,14 +1,14 @@
-package com.school.sample;
+package com.school.sample.JVclass;
 
 public class pessoa {
     private int Id;
     private String nome;
-    private int telemovel;
+    private int telefone;
 
-    public pessoa(int Id, String nome, int telemovel){
+    public pessoa(int Id, String nome, int telefone){
         this.Id = Id;
         this.nome = nome;
-        this.telemovel = telemovel;
+        this.telefone = telefone;
     }
 
     public int getId() {
@@ -27,11 +27,11 @@ public class pessoa {
         this.nome = nome;
     }
 
-    public int getTelemovel() {
-        return telemovel;
+    public int getTelefone() {
+        return telefone;
     }
 
-    public void setTelemovel(int telemovel) {
-        this.telemovel = telemovel;
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
     }
 }

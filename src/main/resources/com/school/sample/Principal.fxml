@@ -25,7 +25,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.sample.SampleController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.sample.controller.SampleController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -36,176 +36,218 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <children>
-                        <AnchorPane fx:id="HomeTela" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="ProdutosTela" prefHeight="541.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="17.0" layoutY="259.0" prefHeight="330.0" prefWidth="853.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="201.0">
-                                 <effect>
-                                    <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
+                              <AnchorPane layoutX="7.0" layoutY="5.0" prefHeight="295.0" prefWidth="867.0" AnchorPane.bottomAnchor="241.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="5.0">
                                  <styleClass>
                                     <String fx:value="round-edge" />
                                     <String fx:value="white-tela" />
+                                    <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="309.0" prefWidth="439.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="353.0" AnchorPane.topAnchor="14.0">
-                                       <styleClass>
-                                          <String fx:value="white-tela" />
-                                          <String fx:value="round-edge" />
-                                       </styleClass>
-                                       <effect>
-                                          <DropShadow height="5.0" radius="2.0" width="5.0" />
-                                       </effect>
-                                       <children>
-                                          <AreaChart layoutX="-73.0" layoutY="-91.0" prefHeight="309.0" prefWidth="486.0" title="Quantidade de Clientes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                              <NumberAxis side="LEFT" />
-                                            </yAxis>
-                                          </AreaChart>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane layoutX="524.0" layoutY="14.0" prefHeight="309.0" prefWidth="324.0" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
-                                       <styleClass>
-                                          <String fx:value="white-tela" />
-                                          <String fx:value="round-edge" />
-                                       </styleClass>
-                                       <effect>
-                                          <DropShadow height="5.0" radius="2.0" width="5.0" />
-                                       </effect>
-                                       <children>
-                                          <AreaChart layoutX="-233.0" layoutY="-34.0" prefHeight="309.0" prefWidth="324.0" title="Quantidade de Vendas" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <xAxis>
-                                                <CategoryAxis side="BOTTOM" />
-                                             </xAxis>
-                                             <yAxis>
-                                                <NumberAxis side="LEFT" />
-                                             </yAxis>
-                                          </AreaChart>
-                                       </children>
-                                    </AnchorPane>
+                                    <TableView fx:id="TableListaProduto" editable="true" layoutX="65.0" layoutY="55.0" onMouseClicked="#verProduto" prefHeight="295.0" prefWidth="867.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columns>
+                                        <TableColumn fx:id="ProdutoID" prefWidth="100.0" text="ID Produto" />
+                                        <TableColumn fx:id="ProdutoNome" prefWidth="261.0" text="Nome do Produto" />
+                                          <TableColumn fx:id="ProdutoPreco" prefWidth="269.0" text="Preço do Produto" />
+                                          <TableColumn fx:id="ProdutoQuantidade" prefWidth="231.0" text="Quantidade do Produto" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
                                  </children>
                               </AnchorPane>
-                              <Separator layoutX="17.0" layoutY="200.0" prefWidth="853.0" visible="false" AnchorPane.bottomAnchor="338.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="200.0" />
-                              <AnchorPane prefHeight="181.0" prefWidth="853.0" stylesheets="@Style.css" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
-                                 <effect>
-                                    <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
-                                 </effect>
+                              <AnchorPane layoutX="6.0" layoutY="310.0" prefHeight="217.0" prefWidth="867.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="12.0">
                                  <styleClass>
                                     <String fx:value="round-edge" />
                                     <String fx:value="white-tela" />
+                                    <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <ScrollPane hbarPolicy="ALWAYS" layoutX="102.0" layoutY="-33.0" prefHeight="181.0" prefWidth="853.0" styleClass="transparent" stylesheets="@Style.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <content>
-                                          <AnchorPane prefHeight="165.0" prefWidth="1117.0">
-                                             <styleClass>
-                                                <String fx:value="white-tela" />
-                                                <String fx:value="round-edge" />
-                                             </styleClass>
-                                             <children>
-                                                <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
-                                                   <styleClass>
-                                                      <String fx:value="round-edge" />
-                                                      <String fx:value="cor-Prin" />
-                                                   </styleClass>
-                                                   <children>
-                                                      <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../../../fotos/people.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Clientes">
-                                                         <font>
-                                                            <Font name="System Bold" size="25.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
-                                                         <font>
-                                                            <Font size="38.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="283.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
-                                                   <styleClass>
-                                                      <String fx:value="round-edge" />
-                                                      <String fx:value="cor-Prin" />
-                                                   </styleClass>
-                                                   <children>
-                                                      <ImageView fitHeight="86.0" fitWidth="99.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../../../fotos/shopping-cart.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Produtos">
-                                                         <font>
-                                                            <Font name="System Bold" size="25.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
-                                                         <font>
-                                                            <Font size="38.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="552.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
-                                                   <styleClass>
-                                                      <String fx:value="round-edge" />
-                                                      <String fx:value="cor-Prin" />
-                                                   </styleClass>
-                                                   <children>
-                                                      <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../../../fotos/truck-side.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Funcionários">
-                                                         <font>
-                                                            <Font name="System Bold" size="21.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
-                                                         <font>
-                                                            <Font size="38.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="825.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
-                                                   <styleClass>
-                                                      <String fx:value="round-edge" />
-                                                      <String fx:value="cor-Prin" />
-                                                   </styleClass>
-                                                   <children>
-                                                      <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../../../fotos/file.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Faturas">
-                                                         <font>
-                                                            <Font name="System Bold" size="25.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
-                                                         <font>
-                                                            <Font size="38.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </AnchorPane>
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </ScrollPane>
+                                    <Label layoutX="42.0" layoutY="25.0" prefHeight="39.0" prefWidth="101.0" text="ID Produto" />
+                                    <TextField fx:id="txtIdProduto" layoutX="119.0" layoutY="32.0" />
+                                    <Label layoutX="37.0" layoutY="81.0" prefHeight="39.0" prefWidth="101.0" text="Nome Produto" />
+                                    <TextField fx:id="txtNomeProduto" layoutX="119.0" layoutY="88.0" />
+                                    <Label layoutX="320.0" layoutY="26.0" prefHeight="39.0" prefWidth="101.0" text="Preço do Produto" />
+                                    <TextField fx:id="txtPrecoProduto" layoutX="418.0" layoutY="34.0" promptText="€0.0" />
+                                    <Label layoutX="343.0" layoutY="79.0" prefHeight="39.0" prefWidth="101.0" text="Quantidade" />
+                                    <TextField fx:id="txtQtdProduto" layoutX="418.0" layoutY="86.0" />
+                                    <Button layoutX="37.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnAdicionarProduto" prefHeight="54.0" prefWidth="175.0" styleClass="adicionar_btn" text="Adicionar" />
+                                    <Button layoutX="238.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnEditarProduto" prefHeight="54.0" prefWidth="175.0" styleClass="editar_btn" text="Editar" />
+                                    <Button layoutX="441.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnEliminarProduto" prefHeight="54.0" prefWidth="175.0" styleClass="eliminar_btn" text="Eliminar" />
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="ProdutosTela" layoutX="27.0" layoutY="14.0" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="HomeTela" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <AnchorPane layoutX="17.0" layoutY="259.0" prefHeight="330.0" prefWidth="853.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="201.0">
+                              <effect>
+                                 <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                              </effect>
+                              <styleClass>
+                                 <String fx:value="round-edge" />
+                                 <String fx:value="white-tela" />
+                              </styleClass>
+                              <children>
+                                 <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="309.0" prefWidth="439.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="353.0" AnchorPane.topAnchor="14.0">
+                                    <styleClass>
+                                       <String fx:value="white-tela" />
+                                       <String fx:value="round-edge" />
+                                    </styleClass>
+                                    <effect>
+                                       <DropShadow height="5.0" radius="2.0" width="5.0" />
+                                    </effect>
+                                    <children>
+                                       <AreaChart layoutX="-73.0" layoutY="-91.0" prefHeight="309.0" prefWidth="486.0" title="Quantidade de Clientes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <xAxis>
+                                             <CategoryAxis side="BOTTOM" />
+                                          </xAxis>
+                                          <yAxis>
+                                             <NumberAxis side="LEFT" />
+                                          </yAxis>
+                                       </AreaChart>
+                                    </children>
+                                 </AnchorPane>
+                                 <AnchorPane layoutX="524.0" layoutY="14.0" prefHeight="309.0" prefWidth="324.0" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
+                                    <styleClass>
+                                       <String fx:value="white-tela" />
+                                       <String fx:value="round-edge" />
+                                    </styleClass>
+                                    <effect>
+                                       <DropShadow height="5.0" radius="2.0" width="5.0" />
+                                    </effect>
+                                    <children>
+                                       <AreaChart layoutX="-233.0" layoutY="-34.0" prefHeight="309.0" prefWidth="324.0" title="Quantidade de Vendas" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <xAxis>
+                                             <CategoryAxis side="BOTTOM" />
+                                          </xAxis>
+                                          <yAxis>
+                                             <NumberAxis side="LEFT" />
+                                          </yAxis>
+                                       </AreaChart>
+                                    </children>
+                                 </AnchorPane>
+                              </children>
+                           </AnchorPane>
+                           <Separator layoutX="17.0" layoutY="200.0" prefWidth="853.0" visible="false" AnchorPane.bottomAnchor="338.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="200.0" />
+                           <AnchorPane prefHeight="181.0" prefWidth="853.0" stylesheets="@Style.css" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
+                              <effect>
+                                 <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                              </effect>
+                              <styleClass>
+                                 <String fx:value="round-edge" />
+                                 <String fx:value="white-tela" />
+                              </styleClass>
+                              <children>
+                                 <ScrollPane hbarPolicy="ALWAYS" layoutX="102.0" layoutY="-33.0" prefHeight="181.0" prefWidth="853.0" styleClass="transparent" stylesheets="@Style.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <content>
+                                       <AnchorPane prefHeight="165.0" prefWidth="1117.0">
+                                          <styleClass>
+                                             <String fx:value="white-tela" />
+                                             <String fx:value="round-edge" />
+                                          </styleClass>
+                                          <children>
+                                             <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                <styleClass>
+                                                   <String fx:value="round-edge" />
+                                                   <String fx:value="cor-Prin" />
+                                                </styleClass>
+                                                <children>
+                                                   <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                      <image>
+                                                         <Image url="@../../../fotos/people.png" />
+                                                      </image>
+                                                   </ImageView>
+                                                   <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Clientes">
+                                                      <font>
+                                                         <Font name="System Bold" size="25.0" />
+                                                      </font>
+                                                   </Label>
+                                                   <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                      <font>
+                                                         <Font size="38.0" />
+                                                      </font>
+                                                   </Label>
+                                                </children>
+                                             </AnchorPane>
+                                             <AnchorPane layoutX="283.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                <styleClass>
+                                                   <String fx:value="round-edge" />
+                                                   <String fx:value="cor-Prin" />
+                                                </styleClass>
+                                                <children>
+                                                   <ImageView fitHeight="86.0" fitWidth="99.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                                      <image>
+                                                         <Image url="@../../../fotos/shopping-cart.png" />
+                                                      </image>
+                                                   </ImageView>
+                                                   <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Produtos">
+                                                      <font>
+                                                         <Font name="System Bold" size="25.0" />
+                                                      </font>
+                                                   </Label>
+                                                   <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                      <font>
+                                                         <Font size="38.0" />
+                                                      </font>
+                                                   </Label>
+                                                </children>
+                                             </AnchorPane>
+                                             <AnchorPane layoutX="552.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                <styleClass>
+                                                   <String fx:value="round-edge" />
+                                                   <String fx:value="cor-Prin" />
+                                                </styleClass>
+                                                <children>
+                                                   <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                      <image>
+                                                         <Image url="@../../../fotos/truck-side.png" />
+                                                      </image>
+                                                   </ImageView>
+                                                   <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Funcionários">
+                                                      <font>
+                                                         <Font name="System Bold" size="21.0" />
+                                                      </font>
+                                                   </Label>
+                                                   <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                      <font>
+                                                         <Font size="38.0" />
+                                                      </font>
+                                                   </Label>
+                                                </children>
+                                             </AnchorPane>
+                                             <AnchorPane layoutX="825.0" layoutY="8.0" prefHeight="149.0" prefWidth="256.0">
+                                                <styleClass>
+                                                   <String fx:value="round-edge" />
+                                                   <String fx:value="cor-Prin" />
+                                                </styleClass>
+                                                <children>
+                                                   <ImageView fitHeight="105.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                      <image>
+                                                         <Image url="@../../../fotos/file.png" />
+                                                      </image>
+                                                   </ImageView>
+                                                   <Label layoutX="2.0" layoutY="111.0" prefHeight="30.0" prefWidth="248.0" text="Número de Faturas">
+                                                      <font>
+                                                         <Font name="System Bold" size="25.0" />
+                                                      </font>
+                                                   </Label>
+                                                   <Label alignment="CENTER" layoutX="140.0" layoutY="32.0" prefHeight="60.0" prefWidth="89.0" text="0">
+                                                      <font>
+                                                         <Font size="38.0" />
+                                                      </font>
+                                                   </Label>
+                                                </children>
+                                             </AnchorPane>
+                                          </children>
+                                       </AnchorPane>
+                                    </content>
+                                 </ScrollPane>
+                              </children>
+                           </AnchorPane>
+                        </AnchorPane>
+                        <AnchorPane fx:id="MenuTela" layoutX="27.0" layoutY="14.0" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="9.0" layoutY="8.0" prefHeight="522.0" prefWidth="605.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="8.0">
                                  <styleClass>
@@ -292,16 +334,16 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <Button layoutX="16.0" layoutY="269.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="adicionar_btn" text="Adicionar" AnchorPane.bottomAnchor="209.0" AnchorPane.rightAnchor="22.0">
+                                    <Button layoutX="16.0" layoutY="269.0" mnemonicParsing="false" onAction="#btnAdicionarCliente" prefHeight="43.0" prefWidth="255.0" styleClass="adicionar_btn" text="Adicionar" AnchorPane.bottomAnchor="209.0" AnchorPane.rightAnchor="22.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></Button>
-                                    <Button layoutX="16.0" layoutY="348.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="editar_btn" text="Editar" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.0">
+                                    <Button layoutX="16.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnEditarCliente" prefHeight="43.0" prefWidth="255.0" styleClass="editar_btn" text="Editar" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="22.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button layoutX="16.0" layoutY="431.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="eliminar_btn" text="Eliminar" AnchorPane.bottomAnchor="47.0" AnchorPane.rightAnchor="22.0">
+                                    <Button layoutX="16.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnEliminarCliente" prefHeight="43.0" prefWidth="255.0" styleClass="eliminar_btn" text="Eliminar" AnchorPane.bottomAnchor="47.0" AnchorPane.rightAnchor="22.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
@@ -326,10 +368,10 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="113.0" layoutY="61.0" />
-                                    <TextField layoutX="113.0" layoutY="98.0" />
-                                    <TextField layoutX="113.0" layoutY="135.0" />
-                                    <TextField layoutX="113.0" layoutY="172.0" />
+                                    <TextField fx:id="txtIdCliente" layoutX="113.0" layoutY="61.0" />
+                                    <TextField fx:id="txtNomeCliente" layoutX="113.0" layoutY="98.0" />
+                                    <TextField fx:id="txtContribuinteCliente" layoutX="113.0" layoutY="135.0" />
+                                    <TextField fx:id="txtTelemovelCliente" layoutX="113.0" layoutY="172.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="9.0" layoutY="7.0" prefHeight="521.0" prefWidth="560.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="317.0" AnchorPane.topAnchor="7.0">
@@ -339,12 +381,12 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView editable="true" layoutX="4.0" layoutY="4.0" prefHeight="513.0" prefWidth="549.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="4.0">
+                                    <TableView fx:id="TableListaCliente" editable="true" layoutX="4.0" layoutY="4.0" onMouseClicked="#verCliente" prefHeight="521.0" prefWidth="560.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn prefWidth="60.0" text="ID" />
-                                        <TableColumn prefWidth="190.0" text="Nome" />
-                                          <TableColumn prefWidth="152.0" text="Contribuinte" />
-                                          <TableColumn prefWidth="139.0" text="Telemóvel" />
+                                        <TableColumn fx:id="ClienteID" prefWidth="60.0" text="ID" />
+                                        <TableColumn fx:id="ClienteNome" prefWidth="190.0" text="Nome" />
+                                          <TableColumn fx:id="ClienteContribuinte" prefWidth="152.0" text="Contribuinte" />
+                                          <TableColumn fx:id="ClienteTelemovel" prefWidth="139.0" text="Telemóvel" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -369,20 +411,18 @@
                                     <String fx:value="shadow" />
                                     <String fx:value="round-edge" />
                                  </styleClass>
-                                 <children>
-                                    <TableView editable="true" layoutX="4.0" layoutY="6.0" prefHeight="509.0" prefWidth="557.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
-                                      <columns>
-                                        <TableColumn prefWidth="56.0" text="ID" />
-                                        <TableColumn prefWidth="141.0" text="Nome" />
-                                          <TableColumn prefWidth="141.0" text="Morada" />
-                                          <TableColumn prefWidth="105.0" text="Email" />
-                                          <TableColumn prefWidth="107.0" text="Telemóvel" />
-                                      </columns>
-                                       <columnResizePolicy>
-                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                       </columnResizePolicy>
-                                    </TableView>
-                                 </children>
+                                 <TableView editable="true" layoutX="4.0" layoutY="6.0" prefHeight="521.0" prefWidth="566.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                       <TableColumn prefWidth="56.0" text="ID" />
+                                       <TableColumn prefWidth="141.0" text="Nome" />
+                                       <TableColumn prefWidth="141.0" text="Morada" />
+                                       <TableColumn prefWidth="105.0" text="Email" />
+                                       <TableColumn prefWidth="107.0" text="Telemóvel" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                       <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                 </TableView>
                               </AnchorPane>
                               <Button layoutX="26.0" layoutY="279.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="255.0" styleClass="adicionar_btn" text="Adicionar" AnchorPane.bottomAnchor="219.0" AnchorPane.leftAnchor="26.0">
                                  <cursor>
@@ -431,7 +471,7 @@
                               <TextField layoutX="122.0" layoutY="217.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="SobreMimTela" layoutY="-1.0" prefHeight="541.0" prefWidth="886.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+                        <AnchorPane fx:id="SobreMimTela" layoutY="-1.0" prefHeight="541.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                            <children>
                               <Label layoutX="256.0" layoutY="14.0" prefHeight="43.0" prefWidth="375.0" text="Projeto Shift">
                                  <font>
@@ -450,7 +490,7 @@
                               </Label>
                               <ImageView fitHeight="148.0" fitWidth="248.0" layoutX="643.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../fotos/AEAA%20-%20LOGOTIPO.V1%20-%20TAMANHO%20L.jpg" />
+                                    <Image url="@../../../fotos/code.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="31.0" layoutY="231.0" prefHeight="40.0" prefWidth="468.0" text="O código do Projeto pode ser encontrado no GitHub">
@@ -546,7 +586,7 @@
                <left>
                   <AnchorPane prefHeight="541.0" prefWidth="214.0" style="-fx-background-color: #dedede;" BorderPane.alignment="CENTER">
                      <children>
-                        <Button graphicTextGap="6.0" layoutY="72.0" mnemonicParsing="false" onAction="#ProdutosButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Produtos">
+                        <Button graphicTextGap="6.0" layoutY="70.0" mnemonicParsing="false" onAction="#MenuButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Menu">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -558,13 +598,13 @@
                               <String fx:value="side-button" />
                            </styleClass>
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="41.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../fotos/shopping-cart.png" />
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="CENTER" graphicTextGap="2.0" layoutY="203.0" mnemonicParsing="false" onAction="#FornecedoresButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Fornecedores">
+                        <Button alignment="CENTER" graphicTextGap="2.0" layoutY="264.0" mnemonicParsing="false" onAction="#FornecedoresButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Fornecedores">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -585,7 +625,7 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button graphicTextGap="7.0" layoutY="269.0" mnemonicParsing="false" onAction="#SobreButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Sobre Mim">
+                        <Button graphicTextGap="7.0" layoutY="328.0" mnemonicParsing="false" onAction="#SobreButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Sobre Mim">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -603,7 +643,7 @@
                               <String fx:value="side-button" />
                            </styleClass>
                         </Button>
-                        <Button alignment="CENTER" layoutY="6.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Home" textAlignment="CENTER">
+                        <Button alignment="CENTER" layoutY="12.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Home" textAlignment="CENTER">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -622,7 +662,7 @@
                               <String fx:value="side-button" />
                            </styleClass>
                         </Button>
-                        <Button graphicTextGap="6.0" layoutY="136.0" mnemonicParsing="false" onAction="#ClientesButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Clientes">
+                        <Button graphicTextGap="6.0" layoutY="201.0" mnemonicParsing="false" onAction="#ClientesButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Clientes">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -637,6 +677,25 @@
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../fotos/users-alt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button graphicTextGap="6.0" layoutY="132.0" mnemonicParsing="false" onAction="#ProdutosButton" prefHeight="45.0" prefWidth="214.0" stylesheets="@Style.css" text="Produtos">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <styleClass>
+                              <String fx:value="selected" />
+                              <String fx:value="side-button" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../fotos/product.png" />
                                  </image>
                               </ImageView>
                            </graphic>

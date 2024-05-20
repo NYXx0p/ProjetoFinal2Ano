@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.sample.InicioController">
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.sample.controller.LoginController">
    <children>
       <AnchorPane fx:id="Log_in" prefHeight="400.0" prefWidth="600.0">
          <children>
             <AnchorPane prefHeight="416.0" prefWidth="300.0" style="-fx-background-color: #313338;">
                <children>
-                  <Button fx:id="New_Conta" layoutX="39.0" layoutY="361.0" mnemonicParsing="false" onAction="#New_Conta_On_Action" onMouseEntered="#New_Conta_Entered" onMouseExited="#New_Conta_Exited" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #fff;" text="Criar nova Conta">
+                  <Button fx:id="New_Conta" layoutX="39.0" layoutY="361.0" mnemonicParsing="false" onAction="#New_Conta_On_Action" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #fff;" text="Criar nova Conta">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -30,14 +30,9 @@
                         <Font name="System Bold" size="31.0" />
                      </font>
                   </Label>
-                  <Button layoutX="39.0" layoutY="302.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #fff;" text="Entrar como Convidado">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="74.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../images__1_-removebg-preview.png" />
+                        <Image url="@../../../fotos/Remove-bg.ai_1714465814043.png" />
                      </image>
                   </ImageView>
                </children>
@@ -51,7 +46,7 @@
                   </Label>
                   <TextField fx:id="txt_Username" layoutX="32.0" layoutY="118.0" prefHeight="30.0" prefWidth="220.0" promptText="Usename" />
                   <PasswordField fx:id="txt_password" layoutX="32.0" layoutY="170.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" />
-                  <Button fx:id="Login" layoutX="31.0" layoutY="224.0" mnemonicParsing="false" onAction="#Login_On_Action" onMouseEntered="#Login_Entered" onMouseExited="#Login_Exited" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #313338;" text="Login" textFill="WHITE">
+                  <Button fx:id="Login" layoutX="31.0" layoutY="224.0" mnemonicParsing="false" onAction="#Login_On_Action" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #313338;" text="Login" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -66,7 +61,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Imagem/sairImagem-removebg-preview.png" />
+                              <Image url="@../../../fotos/exit.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -84,7 +79,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <Button fx:id="btn_Criar" layoutX="40.0" layoutY="246.0" mnemonicParsing="false" onAction="#btn_Criar_On_Action" onMouseEntered="#btn_Criar_Entered" onMouseExited="#btn_Criar_Exited" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #313338;" text="Criar Conta" textFill="WHITE">
+                  <Button fx:id="btn_Criar" layoutX="40.0" layoutY="246.0" mnemonicParsing="false" onAction="#btn_Criar_On_Action" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #313338;" text="Criar Conta" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -116,7 +111,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btn_login" layoutX="41.0" layoutY="356.0" mnemonicParsing="false" onAction="#btn_login_On_Action" onMouseEntered="#btn_login_Entered" onMouseExited="#btn_login_Exited" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #fff;" text="Já tenho Conta">
+                  <Button fx:id="btn_login" layoutX="41.0" layoutY="356.0" mnemonicParsing="false" onAction="#btn_login_On_Action" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #fff;" stylesheets="@Style.css" text="Já tenho Conta">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -126,7 +121,7 @@
                   </Button>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="82.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../images__1_-removebg-preview.png" />
+                        <Image url="@../../../fotos/Remove-bg.ai_1714465814043.png" />
                      </image>
                   </ImageView>
                </children>

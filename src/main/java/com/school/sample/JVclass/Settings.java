@@ -9,10 +9,13 @@ public class Settings {
     private static ObservableList<Cliente> listaCliente = FXCollections.observableArrayList();
     private static ObservableList<Fornecedor> listaFornecedor = FXCollections.observableArrayList();
     private static ObservableList<Produtos> listaProduto = FXCollections.observableArrayList();
+
+    private static ObservableList<Login> listaLogin = FXCollections.observableArrayList();
     private static Cliente editarCliente;
     private static Fornecedor editarFornecedor;
 
     private static Produtos editarProduto;
+
 
     public static void setPrimaryStage(Stage primaryStage) {
         Settings.primaryStage = primaryStage;
@@ -26,7 +29,7 @@ public class Settings {
     public static ObservableList<Cliente> getListaCliente() {
         return listaCliente;
     }
-;
+
     public static ObservableList<Fornecedor> getListaFornecedor() {
         return listaFornecedor;
     }
@@ -34,6 +37,8 @@ public class Settings {
     public static ObservableList<Produtos> getListaProduto() {
         return listaProduto;
     }
+
+    public static ObservableList<Login> getListaLogin(){return listaLogin;}
 
 
     // Métodos para obter os objetos de edição
@@ -66,6 +71,9 @@ public class Settings {
     }
     public static void setListaProduto(ObservableList<Produtos> listaProduto) {
         Settings.listaProduto = listaProduto;
+    }
+    public static void setListaLogin(ObservableList<Login> listaLogin) {
+        Settings.listaLogin = listaLogin;
     }
 }
 

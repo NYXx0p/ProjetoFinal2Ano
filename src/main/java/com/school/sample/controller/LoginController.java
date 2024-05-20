@@ -1,27 +1,29 @@
 package com.school.sample.controller;
 
 import com.school.sample.JVclass.Login;
+import com.school.sample.JVclass.Settings;
 import com.school.sample.connection.LoginDB;
 import com.school.sample.connection.MyConnection;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.net.URL;
+import java.sql.*;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
     @FXML
     private AnchorPane Log_in;
     @FXML
@@ -105,41 +107,48 @@ public class LoginController {
             }
         }
     }
-
+    @FXML
     public void Login_On_Action(ActionEvent actionEvent) {
         if ( txt_Username.getText().isEmpty() || txt_password.getText().isEmpty() ) {
-            Connection conn = MyConnection.openDB();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, preencha todos os campos");
+            alert.showAndWait();
+        }
+        else{
+            String sql = "SELECT Conta_Login, Pass FROM login WHERE Conta_Login = ? and Pass = ?";
 
-            String verificarLogin = "SELECT count(1) FROM Login WHERE Conta_Login = '" + txt_Username.getText() + "' AND password = '" + txt_password.getText() + "'";
+                Connection conn = MyConnection.openDB();
+                PreparedStatement stmt = null;
+                ResultSet rs = null;
 
-            try{
-                Statement stmt = conn.createStatement();
-                ResultSet resultado = stmt.executeQuery(verificarLogin);
+                try {
 
-                while (resultado.next()){
+                    stmt = conn.prepareStatement(sql);
+                    stmt.setString(1, txt_Username.getText());
+                    stmt.setString(2, txt_password.getText());
 
-                    if(resultado.getInt(1) == 1) {
+                    rs = stmt.executeQuery();
+                    // IF SUCCESSFULLY LOGIN, THEN PROCEED TO ANOTHER FORM WHICH IS OUR MAIN FORM
+                    if ( rs.next() ) {
+                        // LINK YOUR MAIN FORM
+                        Parent scene = FXMLLoader.load(getClass().getResource("src/main/resources/com/school/sample/Principal.fxml"));
+                        Stage voltar = new Stage();
+                        voltar.initOwner(Settings.getPrimaryStage());
+                        voltar.initModality(Modality.WINDOW_MODAL);
+                        voltar.setScene(new Scene(scene));
+                        // Obtém a janela atual e a oculta
+                        Window window = Login.getScene().getWindow();
+                        window.hide();
+                        // Exibe a nova janela "Principal1.fxml"
+                        voltar.show();
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("INFORMAÇÃO");
                         alert.setHeaderText(null);
                         alert.setContentText("O Login foi um sucesso");
                         alert.showAndWait();
-
-                        // Cria uma nova janela
-                        Stage back = new Stage();
-
-                        // Obtém a janela atual através do botão de login e esconde-a
-                        Window window = Login.getScene().getWindow();
-                        window.hide();
-                        back.close();
-                        Parent parent = FXMLLoader.load(getClass().getResource("Principal.fxml"));
-                        Stage stage = new Stage();
-                        Scene scene = new Scene(parent);
-
-                        // Define a nova cena na janela e exibe-a
-                        stage.setScene(scene);
-                        stage.show();
-                    }else{
+                    } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Alerta");
                         alert.setHeaderText(null);
@@ -147,23 +156,26 @@ public class LoginController {
                         alert.showAndWait();
 
                     }
+                } catch (SQLException | IOException e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    //Fecha a conexão com a base de dados
+                    MyConnection.closeDB();
                 }
-            } catch (SQLException | IOException e) {
-                // Imprime a stack trace do erro, se ocorrer
-                e.printStackTrace();
-            }finally {
-                //Fecha a conexão com a base de dados
-                MyConnection.closeDB();
             }
         }
-    }
-    public void New_Conta_On_Action(ActionEvent actionEvent) {
-        Log_in.setVisible(false);
-        Criar_Conta.setVisible(true);
-    }
 
-    public void btn_login_On_Action(ActionEvent actionEvent) {
-        Log_in.setVisible(true);
-        Criar_Conta.setVisible(false);
+        public void New_Conta_On_Action (ActionEvent actionEvent){
+            Log_in.setVisible(false);
+            Criar_Conta.setVisible(true);
+        }
+
+        public void btn_login_On_Action (ActionEvent actionEvent){
+            Log_in.setVisible(true);
+            Criar_Conta.setVisible(false);
+        }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 }
